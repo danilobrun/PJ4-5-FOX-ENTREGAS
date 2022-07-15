@@ -9,7 +9,7 @@ export function HomeView () {
       <Banner className='vh-100'>
           <Container className="h-100 d-flex flex-column justify-content-center align-items-center align-items-lg-start">
             <Title className="text-white text-center text-lg-start mt-auto mt-lg-0">Cifra Engenharia Logística, moto entrega.</Title>
-            <CustomButton variant='success' size='lg' className='mt-auto mt-lg-3 mb-2'>Criar conta</CustomButton>
+            <CustomButton loading variant='success' size='lg' className='mt-auto mt-lg-3 mb-2'>Criar conta</CustomButton>
             <CustomButton variant='success' size='lg' className='mb-4'>Fazer Login</CustomButton>
         </Container>
       </Banner>
