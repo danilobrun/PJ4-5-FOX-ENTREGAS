@@ -1,1 +1,8 @@
 aula - 16/05 - 01:29:33
+
+anotações
+1 - componente header.tsxt estudar para aplicar bg-secondary-gradient
+  <Navbar fixed='top' expand="lg" bg={isTransparent ? undefined : 'secondary'}>
+
+
+aula - 19/05 
