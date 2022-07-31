@@ -26,7 +26,7 @@ export function Header () {
         <Navbar fixed='top' expand="lg" bg={isTransparent ? undefined : 'secondary'}>
             <Container>
                 <Navbar.Brand to='/' as={Link}>
-                    <img src={isTransparent ? Logo : LogoWhite} width={194} height={51} alt="Logo Cifra"/>
+                    <ImageStyled src={isTransparent ? Logo : LogoWhite} width={194} height={51} alt="Logo Cifra"/>
                 </Navbar.Brand>
                 <NavbarToggleStyled aria-controls="basic-navbar-nav">
                     <FontAwesomeIcon icon={faBars} className={isTransparent ? "text-gray" : "text-white"} size="lg" />
@@ -42,6 +42,13 @@ export function Header () {
     </Navbar>
     )
 }
+
+const ImageStyled = styled.img`
+    @media (min-width: 992px) {
+        width: 266px;
+        height: auto;
+    }
+`
 
 const NavbarToggleStyled = styled(Navbar.Toggle)`
     border: none;
