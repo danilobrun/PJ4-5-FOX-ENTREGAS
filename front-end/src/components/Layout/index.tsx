@@ -1,3 +1,4 @@
+import { Footer } from "./Footer"
 import { Header } from "./Header"
 
 type Props = {
@@ -10,7 +11,7 @@ export const Layout: React.FC<Props> = ({
             <>
                 <Header />
                 {children}
-                <p>Footer</p>
+                <Footer />
             </>
         )
     }

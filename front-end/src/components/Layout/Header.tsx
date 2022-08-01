@@ -23,7 +23,7 @@ export function Header () {
         }
     }, [isTransparent])
     return (
-        <Navbar fixed='top' expand="lg" bg={isTransparent ? undefined : 'secondary'}>
+        <NavbarStyled fixed='top' expand="lg" bg={isTransparent ? undefined : 'secondary'}>
             <Container>
                 <Navbar.Brand to='/' as={Link}>
                     <ImageStyled src={isTransparent ? Logo : LogoWhite} width={194} height={51} alt="Logo Cifra"/>
@@ -39,9 +39,16 @@ export function Header () {
                     </Nav>
                 </NavbarCollapseStyled>
             </Container>
-    </Navbar>
+    </NavbarStyled>
     )
 }
+
+const NavbarStyled = styled(Navbar)`
+    transition: all .3s linear;
+    ${props => props.bg === 'secondary' && `
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    `}
+`
 
 const ImageStyled = styled.img`
     @media (min-width: 992px) {
