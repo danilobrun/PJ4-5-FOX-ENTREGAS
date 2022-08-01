@@ -8,12 +8,16 @@ import Logo from "../../assets/img/logo-cifra.png"
 import LogoWhite from "../../assets/img/logo-cifra-white.png"
 import { CustomButton } from "../CustomButton";
 
-export function Header () {
-    const [isTransparent, setIsTransparent] = useState(true)
+type Props = {
+    startTransparent?: boolean
+}
+
+export function Header ({ startTransparent = false }: Props) {
+    const [isTransparent, setIsTransparent] = useState(startTransparent)
     useEffect(() => {
         const scrollChange = () => {
             const isLowScroll = window.scrollY < 60
-            if (isLowScroll !==  isTransparent) {
+            if (startTransparent && isLowScroll !==  isTransparent) {
                 setIsTransparent(isLowScroll)
             }
         }
@@ -21,7 +25,7 @@ export function Header () {
         return () => {
             window.removeEventListener('scroll', scrollChange)
         }
-    }, [isTransparent])
+    }, [isTransparent, startTransparent])
     return (
         <NavbarStyled fixed='top' expand="lg" bg={isTransparent ? undefined : 'secondary'}>
             <Container>
