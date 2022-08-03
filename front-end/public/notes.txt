@@ -10,4 +10,7 @@ anotações
 1 - Layout/index.tsx NotFoundView ajustar para crescer o conteúdo para deixar o rodapé footer no final conforme fizemos no projeto antigo
 final da aula ele da dica de como tratar o toastfy com switch case
 
-aula - 23/05 - 33:07
+aula - 23/05 - 01:07
+anotações
+1 - No formfiled useState fazer o olhinho para o campo de senha booleano ao usuário clicar type='text' depois volta para type='password' para esconder
+https://react-bootstrap.github.io/forms/input-group/
