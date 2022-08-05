@@ -5,6 +5,7 @@ import { CustomButton } from "../../components/CustomButton";
 import { FormField } from "../../components/FormField";
 import { Layout } from "../../components/Layout";
 import { PageTitle } from "../../components/PageTitle";
+import * as yup from 'yup';
 
 type FormValues = {
     name: string
@@ -23,13 +24,24 @@ export function RegisterView () {
             password: '',
             agree: false
         },
-        onSubmit: (values) => 
-        console.log('oi', values)
+        validationSchema: yup.object().shape({
+            name: yup.string().required('Preencha seu nome.').min(5, 'Informe pelo menos 5 caractéres.'),
+            email: yup.string().required('Preencha seu e-mail.').email('Preencha um e-mail válido.'),
+            phone: yup.string().required('Preencha o telefone.'),
+            password: yup.string().required('Preencha a senha.').min(8, 'Informe pelo menos 8 caractéres.').max(50, 'Informe no máximo 50 caractéres.'),
+            agree: yup.boolean().equals([true], 'É preciso aceitar os termos.')
+        }),
+        onSubmit: (values) => {
+            console.log('oi', values)
+        }
     })
     const getFieldProps = (fieldName: keyof FormValues) => {
         return {
             ...formik.getFieldProps(fieldName),
-            controlId: `input-${fieldName}`
+            controlId: `input-${fieldName}`,
+            error: formik.errors[fieldName],
+            isInvalid: formik.touched[fieldName] && !!formik.errors[fieldName],
+            isValid: formik.touched[fieldName] && !formik.errors[fieldName]
         }
     }
     return (
@@ -72,6 +84,11 @@ export function RegisterView () {
                                     type="checkbox"
                                     label={<>Eu li e aceito os <a href="/termos-de-uso.pdf" target="_blank">Termos de Uso.</a></>}
                                 />
+                                {formik.touched.agree && formik.errors.agree && (
+                                    <Form.Control.Feedback type="invalid" className="d-block">
+                                        {formik.errors.agree}
+                                    </Form.Control.Feedback>
+                                )}
                             </Form.Group>
                             <div className="d-grid mb-4">
                                 <CustomButton type="submit">
